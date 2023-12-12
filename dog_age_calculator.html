@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #result {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0066cc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dog Age Calculator</h1>
+    <label for="dogAge">Enter Dog's Age (in years): </label>
+    <input type="number" id="dogAge" min="0" placeholder="Enter dog's age">
+
+    <button onclick="calculateHumanAge()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateHumanAge() {
+            // Get the dog's age from the input field
+            var dogAge = document.getElementById('dogAge').value;
+
+            // Check if the input is a valid number
+            if (isNaN(dogAge) || dogAge < 0) {
+                alert('Please enter a valid positive number for the dog\'s age.');
+                return;
+            }
+
+            // Calculate the human age equivalent for dogs using a common conversion
+            var humanAge = calculateHumanEquivalentAge(dogAge);
+
+            // Display the result
+            document.getElementById('result').innerHTML = 'The dog\'s age in human years is approximately ' + humanAge + ' years.';
+        }
+
+        function calculateHumanEquivalentAge(dogAge) {
+            if (dogAge <= 1) {
+                return dogAge * 15;
+            } else if (dogAge <= 2) {
+                return 15 + (dogAge - 1) * 9;
+            } else {
+                return 24 + (dogAge - 2) * 5;
+            }
+        }
+    </script>
+</body>
+</html>
